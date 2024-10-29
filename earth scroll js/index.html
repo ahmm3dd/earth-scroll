@@ -1,0 +1,56 @@
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>earth scroll</title>
+  <style>
+    body {
+        margin: 0;
+        height: 300vh; 
+        overflow-y: scroll;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color: black;
+        
+    }
+
+    .color {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #earth {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        width: 200px; 
+        transition: transform 0.2s ease-in-out; 
+    }
+  </style>
+</head>
+<body >
+    
+  <div>
+     <img id="earth" src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif" alt="Earth">
+  </div>
+
+  <script>
+    let scale = 1;
+    const earth = document.getElementById('earth');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        scale = 1 + scrollY / 1000; /* Control the scaling sensitivity */
+        earth.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    });
+  </script>
+</body>
+</html>
